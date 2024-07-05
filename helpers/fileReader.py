@@ -3,15 +3,18 @@ import csv
 
 class fileReader:
     def __init__(self, filename):
-        self.changeFile(self, filename)
+        self.filename=""
+        self.changeFile(filename)
 
     def changeFile(self, filename):
+        self.filename = filename
         # Check if file exists
         if os.path.exists(filename):
-            self.filename = filename
             print("File exists")
         else:
             print("File does not exist")
+            with open(filename, mode='w') as file:
+                pass  # Just to create an empty file without writing anything
 
     def readData(self):
         with open(self.filename, mode='r') as file:
